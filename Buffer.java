@@ -1,9 +1,12 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Buffer {
     private int capacity;
-    private Queue<Integer> buffer;
+    private LinkedList<Integer> buffer;
     private int totalAccesses;
     private int count = 0;
 
@@ -26,34 +29,26 @@ public class Buffer {
         return buffer.size() >= capacity;
     }
 
-    public synchronized void produce(int value) {
+    public synchronized void produce(int value) throws InterruptedException {
         while (isFull()) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait();
         }
-
         buffer.add(value);
         count++;
         // System.out.println("Produced: " + value);
-        notifyAll();
+        notify();
     }
 
-    public synchronized int consume() {
+    public synchronized int consume() throws InterruptedException {
+
         while (isEmpty()) {
-            try {
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait();
         }
 
         int value = buffer.remove();
         count++;
         // System.out.println("Consumed: " + value);
-        notifyAll();
+        notify();
         return value;
     }
 

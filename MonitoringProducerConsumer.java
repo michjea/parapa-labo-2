@@ -13,39 +13,30 @@ public class MonitoringProducerConsumer {
         int consumerCount = 20;
 
         // Buffer size impact
-        System.out.println("\nStart simulation with bufferSize=" + 10 + ", producerCount=" + producerCount
+
+        System.out.println("\nStart simulation with bufferSize=" + 10 + ",producerCount=" + producerCount
                 + ", consumerCount=" + consumerCount);
+
         start(10, producerCount, consumerCount);
 
-        System.out.println("\nStart simulation with bufferSize=" + 50 + ", producerCount=" + producerCount
+        System.out.println("\nStart simulation with bufferSize=" + 50 +
+                ", producerCount=" + producerCount
                 + ", consumerCount=" + consumerCount);
         start(50, producerCount, consumerCount);
 
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + producerCount
+        System.out.println("\nStart simulation with bufferSize=" + 100 +
+                ", producerCount=" + producerCount
                 + ", consumerCount=" + consumerCount);
         start(100, producerCount, consumerCount);
 
-        // Producer / consumers count impact
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + 10
-                + ", consumerCount=" + 10);
-        start(100, 10, 10);
-        // Producer / consumers count impact
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + 20
-                + ", consumerCount=" + 20);
-        start(100, 20, 20);
-
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + 40
-                + ", consumerCount=" + 40);
-        start(100, 40, 40);
-
         // Producer / consumers impact with different values
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + 10
-                + ", consumerCount=" + 50);
-        start(100, 10, 50);
+        // System.out.println("\nStart simulation with bufferSize=" + 100 + ",
+        // producerCount=" + 10 + ", consumerCount=" + 50);
+        // start(100, 10, 50);
 
-        System.out.println("\nStart simulation with bufferSize=" + 100 + ", producerCount=" + 50
-                + ", consumerCount=" + 10);
-        start(100, 50, 10);
+        // System.out.println("\nStart simulation with bufferSize=" + 100 + ",
+        // producerCount=" + 50+ ", consumerCount=" + 10);
+        // start(100, 50, 10);
     }
 
     public static void start(int bufferSize, int producerCount, int consumerCount) {
